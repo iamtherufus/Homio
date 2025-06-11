@@ -27,24 +27,11 @@ lovelace:
 3. A Few Custom Cards
 Homio uses a couple of custom cards.
 
-**button-card by Romraider** — https://github.com/custom-cards/button-card 
+   - [**button-card by Romraider**](https://github.com/custom-cards/button-card) - This is the main building block of Homio. Install it via HACS.
 
-This is the main building block of Homio. Install it via HCS
+   - [**Layout Card Modified**](https://github.com/iamtherufus/Homio/blob/main/layout-card-modified.js) (Based on the [Layout-Card from Thomas Loven](https://github.com/thomasloven/lovelace-layout-card)) - This is the Layout Card from Thomas Loven but slightly modified to support extra CSS properties. You have to install this card yourself by downloading the file from my Github and place it in the folder **/www/community/layout-card-modified/layout-card-modified.js**. Create the folder yourself.
 
-**layout-card by Thomas Loven** — https://github.com/thomasloven/lovelace-layout-card
-
-You’ll need to use the slightly modified version included in this repo named layout-card-modified to support extra CSS properties. Dont install this card via HACS, grab it from the repo and add it in the location specified in the folder structure.
-
-This card need to be installed here:
-
-**/www/community/layout-card-modified/layout-card-modified.js**
-
-**my-slider-v2 by AnthonMS** - https://github.com/AnthonMS/my-cards/tree/main
-
-This card need to be installed here
-
-**/local/community/light-slider/my-slider-v2.js**
-
+   - [**my-slider-v2 by AnthonMS**](https://github.com/AnthonMS/my-cards/tree/main) - Follow his [install instructions](https://github.com/AnthonMS/my-cards/blob/main/docs/installation.md).
 
 ## 📁 Folder Structure
 
@@ -192,39 +179,7 @@ Use the layout in your dashboard YAML like this:
 
 The homio enitiy layout is a layout include file designed to make placing entity cards in a consistent, responsive layout easy. It handles spacing, responsive column counts, and layout switching for mobile views.
 
-You don’t need to touch this file — just include it where you want a grid of homio_entity cards (or other custom buttons) to appear. However if you want vertical scroll on mobile for your entities make sure to uncomment the media query section in the below example
-
-```
-position: absolute
-grid-auto-columns: 260px
-grid-auto-flow: column
-grid-column-gap: 5px
-margin: 0 0 0 8vw
-padding: 0
-inset: auto 0 85px 0
-scroll-snap-type: x mandatory
-overflow-y: hidden
-mediaquery:
-  # FOR VERTICAL MOBILE SCROLLING UNCOMMENT ALL LINES
-  # "(min-width: 769px) and (max-width: 1249px)":
-  #   position: relative
-  #   grid-auto-flow: row
-  #   grid-auto-columns: none
-  #   grid-template-columns: 1fr 1fr
-  #   grid-column-gap: 5px
-  #   grid-row-gap: 5px
-  #   margin: 599px 4vw 0 4vw
-  #   inset: auto
-  # "(max-width: 768px)":
-  #   position: relative
-  #   grid-auto-flow: row
-  #   grid-auto-columns: none
-  #   grid-template-columns: 1fr
-  #   grid-column-gap: 0
-  #   grid-row-gap: 5px
-  #   margin: 599px 4vw 0 4vw
-  #   inset: auto
-```
+You don’t need to touch this file — just include it where you want a grid of homio_entity cards (or other custom buttons) to appear.
 
 **Features**
 Horizontal scroll layout on large screens

@@ -353,56 +353,56 @@ Keep it to 8 or fewer links for the best layout on larger screens. You only need
 ```
 - type: custom:button-card
   template:
-    - homio_nav_link
+    - homio_nav_button
   label: room1
   variables:
     path: /dashboard-homio/room1
 
 - type: custom:button-card
   template:
-    - homio_nav_link
+    - homio_nav_button
   label: room2
   variables:
     path: /dashboard-homio/room2
 
 - type: custom:button-card
   template:
-    - homio_nav_link
+    - homio_nav_button
   label: room3
   variables:
     path: /dashboard-homio/room3
 
 - type: custom:button-card
   template:
-    - homio_nav_link
+    - homio_nav_button
   label: room4
   variables:
     path: /dashboard-homio/room4
 
 - type: custom:button-card
   template:
-    - homio_nav_link
+    - homio_nav_button
   label: room5
   variables:
     path: /dashboard-homio/room5
 
 - type: custom:button-card
   template:
-    - homio_nav_link
+    - homio_nav_button
   label: room6
   variables:
     path: /dashboard-homio/room6
 
 - type: custom:button-card
   template:
-    - homio_nav_link
+    - homio_nav_button
   label: room7
   variables:
     path: /dashboard-homio/room7
 
 - type: custom:button-card
   template:
-    - homio_nav_link
+    - homio_nav_button
   label: room8
   variables:
     path: /dashboard-homio/room8

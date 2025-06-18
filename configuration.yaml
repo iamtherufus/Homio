@@ -25,7 +25,7 @@ lovelace:
       url: "/local/community/light-slider/my-slider-v2.js"
     - type: "css"
       url: "https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&display=swap"
-dashboards:
+  dashboards:
     dashboard-homio:
       mode: yaml
       title: "homio"

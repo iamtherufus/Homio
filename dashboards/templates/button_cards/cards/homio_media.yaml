@@ -73,7 +73,7 @@ homio_media:
     custom_fields:
       mute_button:
         - position: absolute
-        - bottom: 22px    # ✅ Aligned here
+        - bottom: 22px
         - left: 8px
         - width: 24px
         - height: 24px

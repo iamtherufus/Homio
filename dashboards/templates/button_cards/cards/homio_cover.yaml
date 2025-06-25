@@ -1,0 +1,98 @@
+homio_cover:
+  # This uses the same base style as the light card for consistency
+  template:
+    - homio_entity
+
+  # NEW: This logic now checks the cover's position attribute to show a percentage
+  state_display: |
+    [[[
+      if (!entity) return "Unknown";
+
+      // If the cover is fully closed, show "Closed".
+      if (entity.state === 'closed') return "Closed";
+      
+      // If the cover has a position attribute and it's not fully open, show the percentage.
+      if (entity.attributes.current_position !== undefined && entity.attributes.current_position < 100) {
+        return `Open - ${entity.attributes.current_position}%`;
+      }
+
+      // For all other states (like "open", "opening", "closing"), just show the state.
+      return entity.state.charAt(0).toUpperCase() + entity.state.slice(1);
+    ]]]
+  
+  # A single tap will toggle the cover (open/close)
+  tap_action:
+    action: toggle
+
+  # A long press will bring up the more-info dialog
+  hold_action:
+    action: more-info
+  
+  # This positions the new controls where the light slider used to be
+  styles:
+    custom_fields:
+      cover_controls:
+        - position: absolute
+        - bottom: 20px
+        - height: 40px
+        - right: 0
+        - left: 0
+        - padding: 0 40px
+
+  custom_fields:
+    cover_controls:
+      card:
+        type: "custom:layout-card"
+        layout_type: "custom:grid-layout"
+        layout:
+          grid-template-columns: repeat(3, 1fr)
+          grid-gap: 10px
+        cards:
+          # Button 1: Open Cover
+          - type: "custom:button-card"
+            icon: "mdi:arrow-up"
+            styles:
+              card:
+                - background-color: "rgba(120, 120, 120, 0.2)"
+                - border-radius: 12px
+                - box-shadow: none
+              icon:
+                - width: 60%
+            tap_action:
+              action: call-service
+              service: cover.open_cover
+              service_data:
+                entity_id: "[[[ return entity.entity_id ]]]"
+
+          # Button 2: Stop Cover
+          # The service call here is correct. Its functionality depends on your physical device.
+          - type: "custom:button-card"
+            icon: "mdi:stop"
+            styles:
+              card:
+                - background-color: "rgba(120, 120, 120, 0.2)"
+                - border-radius: 12px
+                - box-shadow: none
+              icon:
+                - width: 50%
+            tap_action:
+              action: call-service
+              service: cover.stop_cover
+              service_data:
+                entity_id: "[[[ return entity.entity_id ]]]"
+          
+          # Button 3: Close Cover
+          - type: "custom:button-card"
+            icon: "mdi:arrow-down"
+            styles:
+              card:
+                - background-color: "rgba(120, 120, 120, 0.2)"
+                - border-radius: 12px
+                - box-shadow: none
+              icon:
+                - width: 60%
+            tap_action:
+              action: call-service
+              service: cover.close_cover
+              service_data:
+                entity_id: "[[[ return entity.entity_id ]]]"

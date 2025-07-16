@@ -40,7 +40,7 @@ lovelace:
       title: "Home"
       icon: mdi:star-plus-outline
       show_in_sidebar: true
-      filename: dashboards/homio/homio.yaml
+      filename: dashboards/homio/kitchen.yaml
 recorder:
   purge_keep_days: 30
   commit_interval: 3

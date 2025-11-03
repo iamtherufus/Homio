@@ -59,7 +59,7 @@ If you install either the layout-card-modified or my-slider-v2 to a different lo
 ```
   resources:
     - type: "module"
-      url: "/hacsfiles/button-card/button-card.js"
+      url: "/hacsfiles/button-card/button-card.js?hacstag=146194325600"
     - type: "module"
       url: "/hacsfiles/kiosk-mode/kiosk-mode.js"
     - type: "module"

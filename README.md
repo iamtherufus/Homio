@@ -4,6 +4,12 @@ Homio is a clean, minimal, and fully YAML-based dashboard for Home Assistant tha
 
 I plan on looking to integrate/create other cards into the homio design in the very near future so feel free to reach out if you have any requests. 
 
+**UPDATE 27/12/26**
+
+There will be some excting new additions to Homio coming in the new year that I am actively working on, including a dedicated Discord channel. I have also been working on a slightly alternate v2 of Homio which is in early beta and coming along nicely. There are some screenshots and a couple of quick clips of v2 in action here if you are interested.
+
+https://github.com/iamtherufus/Homio/blob/main/screenshots/v2/Homio%20v2%20screenshots.md
+
 Desktop/Tablet view
 
 <img width="1512" alt="Screenshot 2025-06-11 at 22 04 05" src="https://github.com/user-attachments/assets/0c904899-f970-4fbe-9e13-64b069ffc126" />

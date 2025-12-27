@@ -6,9 +6,9 @@ I plan on looking to integrate/create other cards into the homio design in the v
 
 **UPDATE 27/12/26**
 
-There will be some excting new additions to Homio coming in the new year that I am actively working on, including a dedicated Discord channel. I have also been working on a slightly alternate v2 of Homio which is in early beta and coming along nicely. There are some screenshots and a couple of quick clips of v2 in action here if you are interested.
+There will be some excting new additions to Homio coming in 2026 that I am actively working on, including a dedicated Discord channel. I have also been working on a slightly alternate v2 of Homio which is in early beta and coming along nicely. There are some screenshots and a couple of quick clips of v2 in action here if you are interested.
 
-https://github.com/iamtherufus/Homio/blob/main/screenshots/v2/Homio%20v2%20screenshots.md
+**https://github.com/iamtherufus/Homio/blob/main/screenshots/v2/Homio%20v2%20screenshots.md**
 
 Desktop/Tablet view
 

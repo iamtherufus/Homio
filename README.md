@@ -11,6 +11,7 @@ There will be some excting new additions to Homio coming in 2026 that I am activ
 **https://github.com/iamtherufus/Homio/blob/main/screenshots/v2/Homio%20v2%20screenshots.md**
 
 **Homio v1**
+<br>
 Desktop/Tablet view
 
 <img width="1512" alt="Screenshot 2025-06-11 at 22 04 05" src="https://github.com/user-attachments/assets/0c904899-f970-4fbe-9e13-64b069ffc126" />

@@ -1,0 +1,241 @@
+homio_media:
+  template:
+    - homio_entity
+  show_last_changed: false
+  show_icon: false
+  state_display: |
+    [[[ 
+      if (entity.state === "playing") {
+        return "Playing - " + entity.attributes.media_title;
+      } else if (entity.state === "paused") {
+        return "Paused - " + entity.attributes.media_title;
+      } else {
+        return entity.state.charAt(0).toUpperCase() + entity.state.slice(1);
+      }
+    ]]]
+  tap_action:
+    action: call-service
+    service: media_player.media_play_pause
+    service_data:
+      entity_id: |
+        [[[ return entity.entity_id ]]]
+  hold_action:
+    action: more-info
+  extra_styles: |
+    .button-card-main::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(51, 51, 51, 0.7) 0%, rgba(51, 51, 51, 0.7) 50%, rgba(51, 51, 51, 0.5) 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .button-card-main {
+      position: relative;
+      z-index: 1;
+    }
+  styles:
+    card:
+      - background-size: cover
+      - background-position: center
+      - background-image: |
+          [[[
+            if (entity.attributes.entity_picture) {
+              return `url(${entity.attributes.entity_picture})`;
+            } else {
+              return "none";
+            }
+          ]]]
+    name:
+      - position: relative
+      - z-index: 2
+      - color: var(--primary-text-color)
+      - font-weight: 600
+      - text-shadow: 0 0 4px rgba(0, 0, 0, 0.2)
+    state:
+      - color: var(--primary-text-color)
+      - font-size: 12px
+      - text-shadow: 0 0 2px rgba(0, 0, 0, 0.15)
+      - z-index: 2
+    label:
+      - position: absolute
+      - bottom: 25px
+      - font-size: 10px
+      - text-transform: uppercase
+      - color: var(--primary-text-color)
+      - letter-spacing: 2px
+      - font-weight: 600
+      - opacity: 0.9
+      - justify-self: start
+      - z-index: 2
+    icon:
+      - display: none
+    custom_fields:
+      mute_button:
+        - position: absolute
+        - bottom: 22px
+        - left: 8px
+        - width: 24px
+        - height: 24px
+        - z-index: 2
+      volume-slider:
+        - position: absolute
+        - bottom: 30px
+        - height: 8px
+        - left: 40px
+        - right: 80px
+        - transition: |
+            [[[
+              if(entity.state === "off" || entity.state === "unavailable")
+              return "transform 0s"
+              else
+              return "transform 0.6s"
+            ]]]
+        - transform: |
+            [[[
+              if(entity.state === "off" || entity.state === "unavailable")
+              return "translateY(45px)"
+              else
+              return "translateY(0)"
+            ]]]
+        - z-index: 2
+      playback_controls:
+        - position: absolute
+        - top: 0
+        - right: 0
+        - height: 100%
+        - z-index: 2
+  custom_fields:
+    mute_button:
+      card:
+        type: custom:button-card
+        template: homio_default
+        show_icon: false
+        show_name: false
+        show_entity_picture: true
+        entity_picture: |
+          [[[
+            return entity.attributes.is_volume_muted
+              ? "/local/images/Homio/icons/mute.svg"
+              : "/local/images/Homio/icons/unmute.svg";
+          ]]]
+        tap_action:
+          action: call-service
+          service: media_player.volume_mute
+          data:
+            entity_id: |
+              [[[
+                return entity.entity_id;
+              ]]]
+            is_volume_muted: |
+              [[[
+                return !entity.attributes.is_volume_muted;
+              ]]]
+        styles:
+          card:
+            - background: none
+            - padding: 0
+            - box-shadow: none
+            - border: none
+            - width: 24px
+            - height: 24px
+          img_cell:
+            - width: 100%
+            - height: 100%
+          entity_picture:
+            - width: 100%
+            - height: 100%
+    volume-slider:
+      card:
+        type: "custom:my-slider-v2"
+        entity: |
+          [[[
+            return entity.entity_id;
+          ]]]
+        attribute: volume_level
+        allowTapping: false
+        allowSliding: true
+        styles:
+          card:
+            - height: 100%
+            - margin: 0
+            - border-radius: 0px
+            - border: none
+            - background: transparent
+            - filter: |
+                [[[
+                  return entity.attributes.is_volume_muted ? "grayscale(100%) brightness(0.7)" : "none";
+                ]]]
+          track:
+            - background: hsl(0 0% 98%)
+            - border-radius: 20px
+          container:
+            - border-radius: 0
+            - overflow: visible
+          progress:
+            - background: hsl(0 0% 75%)
+            - border-top-left-radius: 20px
+            - border-bottom-left-radius: 20px
+          thumb:
+            - display: block
+            - width: 16px
+            - height: 16px
+            - border-radius: 50%
+            - background: white
+            - transform: translateY(-4px)
+            - box-shadow: 2px 0 8px 2px rgba(0, 0, 0, 0.15)
+    playback_controls:
+      card:
+        type: "custom:layout-card"
+        layout_type: "custom:grid-layout"
+        layout:
+          grid-template-columns: 60px
+          grid-template-rows: repeat(2, 1fr)
+          margin: 0
+          height: 170px
+          padding: 0
+        cards:
+          - type: custom:button-card
+            template: 
+              - homio_default
+            show_entity_picture: true
+            entity_picture: /local/images/Homio/icons/skip_previous.svg
+            tap_action:
+              action: call-service
+              service: media_player.media_previous_track
+              data:
+                entity_id: |
+                  [[[
+                    return entity.entity_id;
+                  ]]]
+            styles:
+              card:
+                - height: 100%
+                - background: rgba(255,255,255,0.1)
+              img_cell:
+                - width: 100%
+              icon:
+                - width: 100%
+                - height: 100%
+          - type: custom:button-card
+            template: 
+              - homio_default
+            show_entity_picture: true
+            entity_picture: /local/images/Homio/icons/skip_next.svg
+            tap_action:
+              action: call-service
+              service: media_player.media_next_track
+              data:
+                entity_id: |
+                  [[[
+                    return entity.entity_id;
+                  ]]]
+            styles:
+              card:
+                - height: 100%
+                - background: rgba(255,255,255,0.1)
+              img_cell:
+                - width: 100%
+              icon:
+                - width: 100%
+                - height: 100%

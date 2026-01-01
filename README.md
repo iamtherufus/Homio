@@ -1,5 +1,12 @@
 ## **🏠 Welcome to Homio**
 
+Original project and Home Assistant dashboard created by iamtherufus.  
+© 2025 iamtherufus — Released under the MIT License.
+
+Redistribution is permitted under the MIT License, provided this copyright
+notice and license are retained.
+
+
 Homio is a clean, minimal, and fully YAML-based dashboard for Home Assistant that i build for a bit of fun. It's still work in progress but wanted to share it with you after receiving many requests for it. It’s built with tablets in mind — perfect for a wall-mounted screen — but it also works well on mobile thanks to its responsive layout. Everything is done in YAML to give you full control and make it easier to share, reuse, and tweak. I recommend to use the visual studio code editor plugin in home assistant to make coding that little bit easier.
 
 I plan on looking to integrate/create other cards into the homio design in the very near future so feel free to reach out if you have any requests. 

@@ -3,11 +3,11 @@ homio_room:
     - '[[[ return variables.motion_sensor ]]]'
   variables:
     show_motion: false
-    motion_sensor: variables.motion_sensor
+    motion_sensor: ""
     show_temp: false
-    temp_sensor: variables.temp_sensor
+    temp_sensor: ""
     show_humid: false
-    humid_sensor: variables.humid_sensor
+    humid_sensor: ""
   template:
     - homio_default
   tap_action:
